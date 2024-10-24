@@ -1,0 +1,36 @@
+﻿<Window x:Class="CMCS_UI.Coordinator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CMCS_UI"
+        mc:Ignorable="d"
+        Title="Coordinator" Height="450" Width="800">
+    <Grid>
+        <!-- Header Label -->
+        <Label Content="Pending Claims for Verification" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+
+        <!-- DataGrid to Display Pending Claims -->
+        <DataGrid x:Name="ClaimsDataGrid" AutoGenerateColumns="False" Height="300" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,50,10,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Claim ID" Binding="{Binding ClaimID}" Width="100"/>
+                <DataGridTextColumn Header="Lecturer Name" Binding="{Binding LecturerName}" Width="150"/>
+                <DataGridTextColumn Header="Hours Worked" Binding="{Binding HoursWorked}" Width="100"/>
+                <DataGridTextColumn Header="Hourly Rate" Binding="{Binding HourlyRate}" Width="100"/>
+                <DataGridTextColumn Header="Claim Status" Binding="{Binding Status}" Width="100"/>
+                <DataGridTextColumn Header="Uploaded Document" Binding="{Binding UploadedFilePath}"/>
+                <DataGridTemplateColumn Header="Actions" Width="200">
+                    
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Approve" Width="80" Margin="5" Click="ApproveButton_Click"/>
+                                <Button Content="Reject" Width="80" Margin="5" Click="RejectButton_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
